@@ -33,12 +33,9 @@
         </div>
     </div>
 
-    <a-scene 
-        mindar-image="imageTargetSrc: ./assets/targets.mind; uiScanning: #scanning-guide; filterMinCF:0.0001; filterBeta: 0.001; warmupTolerance: 5; missTolerance: 5" 
-        color-space="sRGB" 
-        renderer="colorManagement: true, physicallyCorrectLights, highRefreshRate: true" 
-        vr-mode-ui="enabled: false" 
-        device-orientation-permission-ui="enabled: false">
+    <a-scene mindar-image="imageTargetSrc: ./assets/targets.mind; uiScanning: #scanning-guide; filterMinCF:0.0001; filterBeta: 0.001; warmupTolerance: 5; missTolerance: 5" 
+        color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights, highRefreshRate: true" 
+        vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
 
         <a-assets>
             <video id="ar-video" src="./assets/hoangphuc.mp4" preload="auto" loop="true" playsinline webkit-playsinline crossorigin="anonymous"></video>
@@ -49,11 +46,11 @@
 
         <a-entity id="mytarget" mindar-image-target="targetIndex: 0">
             
-            <a-video src="#ar-video" position="0 0 0" height="0.552" width="1" class="clickable"></a-video>
+            <a-video src="#ar-video" position="0 0 0" width="1" height="1.777" class="clickable"></a-video>
             
-            <a-plane position="0 0 -0.01" height="0.6" width="1.05" color="#00f2ff" material="shader: flat; transparent: true; opacity: 0.3"></a-plane>
+            <a-plane position="0 0 -0.01" width="1.05" height="1.85" color="#00f2ff" material="shader: flat; transparent: true; opacity: 0.3"></a-plane>
 
-            <a-text value="HOANG PHUC AR" color="#00f2ff" align="center" position="0 -0.4 0" scale="0.3 0.3 0.3" font="exo2bold"></a-text>
+            <a-text value="HOANG PHUC AR" color="#00f2ff" align="center" position="0 -1.1 0" scale="0.3 0.3 0.3" font="exo2bold"></a-text>
         </a-entity>
     </a-scene>
 
