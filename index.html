@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOANG PHUC | PRO EXPERIENCE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+
+    <audio id="sfx-click" src="assets/sfx-click.mp3" preload="auto"></audio>
+
+    <main class="landing-container">
+        <div class="glass-panel cinematic-card">
+            <div class="logo-area">
+                <img src="images/logo.png" alt="Logo" class="main-logo">
+            </div>
+            
+            <div class="glitch-wrapper">
+                <h1 class="glitch" data-text="HOANG PHUC">HOANG PHUC</h1>
+            </div>
+            <p class="subtitle">IMMERSIVE REALITY SYSTEM v2.0</p>
+
+            <div class="action-area">
+                <a href="ar-experience.html" class="btn-cyber" onclick="playClickSound()">
+                    <span class="btn-content">INITIALIZE AR</span>
+                    <span class="btn-glitch"></span>
+                </a>
+            </div>
+        </div>
+        
+        <footer class="footer-minimal">
+            <div class="line"></div>
+            <p>DESIGNED FOR THE FUTURE</p>
+        </footer>
+    </main>
+
+    <script src="js/particles.js"></script>
+    <script>
+        // Simple Audio Handler inline for index
+        function playClickSound() {
+            const audio = document.getElementById('sfx-click');
+            if(audio) audio.play();
+        }
+    </script>
+</body>
+</html>

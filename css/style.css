@@ -1,0 +1,186 @@
+/* --- CORE VARIABLES --- */
+:root {
+    --neon-blue: #00f3ff;
+    --neon-pink: #bc13fe;
+    --dark-bg: #050505;
+    --glass: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    margin: 0;
+    background: var(--dark-bg);
+    color: white;
+    font-family: 'Rajdhani', sans-serif;
+    overflow: hidden;
+}
+
+/* --- LANDING PAGE PRO --- */
+#particle-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+}
+
+.landing-container {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* GLITCH TEXT EFFECT */
+.glitch-wrapper { margin-bottom: 10px; }
+.glitch {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    position: relative;
+    color: white;
+    letter-spacing: 5px;
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -1px 0 var(--neon-pink);
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -1px 0 var(--neon-blue);
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(10px, 9999px, 30px, 0); }
+    20% { clip: rect(80px, 9999px, 100px, 0); }
+    100% { clip: rect(5px, 9999px, 60px, 0); }
+}
+
+/* CYBER BUTTON */
+.btn-cyber {
+    position: relative;
+    padding: 15px 40px;
+    background: transparent;
+    border: 1px solid var(--neon-blue);
+    color: var(--neon-blue);
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    overflow: hidden;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-cyber:hover {
+    background: rgba(0, 243, 255, 0.1);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.4);
+    letter-spacing: 4px;
+}
+
+.btn-cyber::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: btn-shine 3s infinite;
+}
+
+@keyframes btn-shine { 0% { left: -100%; } 20% { left: 100%; } 100% { left: 100%; } }
+
+/* --- AR SCANNER UI PRO --- */
+.scan-frame-pro {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vw; height: 70vw;
+    max-width: 400px; max-height: 400px;
+}
+
+.bracket {
+    position: absolute;
+    width: 40px; height: 40px;
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 0 10px var(--neon-blue);
+}
+
+.tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+.tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+.bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+.br { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+.scan-line {
+    position: absolute;
+    width: 100%; height: 2px;
+    background: var(--neon-blue);
+    box-shadow: 0 0 15px var(--neon-blue);
+    animation: scan-move 2s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes scan-move {
+    0% { top: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+.system-status {
+    color: var(--neon-blue);
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.blink-dot {
+    width: 8px; height: 8px;
+    background: var(--neon-blue);
+    border-radius: 50%;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Video Controls */
+.glass-panel-control {
+    position: absolute;
+    bottom: 80px; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 20;
+}
+
+.control-btn {
+    background: rgba(0,0,0,0.6);
+    border: 1px solid var(--neon-blue);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-family: 'Rajdhani';
+    font-weight: bold;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+}
+
+/* Utilities */
+.hidden { opacity: 0; pointer-events: none; transition: opacity 0.5s; }
+.cinematic-card { text-align: center; }
+.main-logo { width: 100px; margin-bottom: 20px; }

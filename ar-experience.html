@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Scanner Pro</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+</head>
+<body>
+
+    <div id="ar-ui-overlay">
+        <div class="ar-header">
+            <a href="index.html" class="back-btn-cyber">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </a>
+            <div class="system-status">
+                <span class="blink-dot"></span> SYSTEM READY
+            </div>
+        </div>
+
+        <div id="scanning-guide" class="scan-frame-pro">
+            <div class="scan-line"></div>
+            <div class="bracket tl"></div><div class="bracket tr"></div>
+            <div class="bracket bl"></div><div class="bracket br"></div>
+            <p class="scan-text-pro">SCANNING TARGET DATA...</p>
+        </div>
+
+        <div id="video-controls" class="glass-panel-control hidden">
+            <button id="btn-mute" class="control-btn">UNMUTE</button>
+        </div>
+    </div>
+
+    <a-scene 
+        mindar-image="imageTargetSrc: ./assets/targets.mind; uiScanning: #scanning-guide; filterMinCF:0.0001; filterBeta: 0.001; warmupTolerance: 5; missTolerance: 5" 
+        color-space="sRGB" 
+        renderer="colorManagement: true, physicallyCorrectLights, highRefreshRate: true" 
+        vr-mode-ui="enabled: false" 
+        device-orientation-permission-ui="enabled: false">
+
+        <a-assets>
+            <video id="ar-video" src="./assets/hoangphuc.mp4" preload="auto" loop="true" playsinline webkit-playsinline crossorigin="anonymous"></video>
+            <audio id="sfx-success" src="assets/sfx-success.mp3"></audio>
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+        <a-entity id="mytarget" mindar-image-target="targetIndex: 0">
+            
+            <a-video src="#ar-video" position="0 0 0" height="0.552" width="1" class="clickable"></a-video>
+            
+            <a-plane position="0 0 -0.01" height="0.6" width="1.05" color="#00f2ff" material="shader: flat; transparent: true; opacity: 0.3"></a-plane>
+
+            <a-text value="HOANG PHUC AR" color="#00f2ff" align="center" position="0 -0.4 0" scale="0.3 0.3 0.3" font="exo2bold"></a-text>
+        </a-entity>
+    </a-scene>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
